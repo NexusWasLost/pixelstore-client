@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Razorpay Test Checkout</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+
+    <h2>Test Checkout</h2>
+
+    <button id="createOrderBtn">Create Order</button>
+
+    <pre id="output"></pre>
+
+    <script>
+        // Razorpay's key_id is meant to be public and safe to expose client-side.
+        // Replace with your actual test key_id (starts with rzp_test_...)
+        const RAZORPAY_KEY_ID = "rzp_test_TF13P6PL244jWe";
+
+        const cartData = {
+            cartItems: [
+                {
+                    itemId: "6a5df70d51f17e3ef5175d7e",
+                    itemName: "Virtual Keyboard",
+                    quantity: 5
+                },
+                {
+                    itemId: "6a5df75551f17e3ef5175d7f",
+                    itemName: "NFT",
+                    quantity: 5
+                }
+            ]
+        };
+
+        const outputEl = document.getElementById("output");
+
+        function log(label, data) {
+            outputEl.textContent += `\n${label}:\n${JSON.stringify(data, null, 2)}\n`;
+        }
+
+        async function createOrder() {
+            try {
+                const response = await fetch("http://localhost:8000/api/order/create", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(cartData)
+                });
+
+                const result = await response.json();
+                log("Create Order Response", result);
+
+                if (!response.ok) {
+                    return;
+                }
+
+                const razorpayOrder = result.data;
+                openCheckout(razorpayOrder);
+
+            } catch (error) {
+                log("Create Order Error", { message: error.message });
+            }
+        }
+
+        function openCheckout(dbOrder) {
+            const options = {
+                key: RAZORPAY_KEY_ID,
+                amount: Math.round(dbOrder.total * 100),
+                currency: "INR",
+                order_id: dbOrder.razorpayOrderId,
+                name: "Test Store",
+                description: "Test Transaction",
+                handler: function (response) {
+                    log("Checkout Success Response", response);
+                    verifyOrder(response);
+                },
+                modal: {
+                    ondismiss: function () {
+                        log("Checkout Dismissed", { message: "User closed the payment window" });
+                    }
+                }
+            };
+
+            const rzp = new Razorpay(options);
+
+            rzp.on("payment.failed", function (response) {
+                log("Payment Failed", response.error);
+            });
+
+            rzp.open();
+        }
+
+        async function verifyOrder(paymentResponse) {
+            try {
+                const response = await fetch("http://localhost:8000/api/order/verify", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        razorpay_order_id: paymentResponse.razorpay_order_id,
+                        razorpay_payment_id: paymentResponse.razorpay_payment_id,
+                        razorpay_signature: paymentResponse.razorpay_signature
+                    })
+                });
+
+                const result = await response.json();
+                log("Verify Order Response", result);
+
+            } catch (error) {
+                log("Verify Order Error", { message: error.message });
+            }
+        }
+
+        document.getElementById("createOrderBtn").addEventListener("click", createOrder);
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link href="assets/styles/root.css" rel="stylesheet">
+    <link href="assets/styles/layout.css" rel="stylesheet">
+    <link href="assets/styles/cart.css" rel="stylesheet">
+    <link href="assets/styles/checkout.css" rel="stylesheet">
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+    <div class="page">
+        <header class="site-header">
+            <div class="header-copy">
+                <div class="eyebrow">Secure Payment</div>
+                <h1>Checkout</h1>
+                <p>Review your order before you pay.</p>
+            </div>
+
+            <div class="header-actions">
+                <button id="cart-toggle" class="cart-button">
+                    <i class="ri-shopping-cart-2-line"></i>
+                    <span id="cart-badge" class="cart-badge">0</span>
+                </button>
+            </div>
+
+            <div id="cart-overlay" class="cart-overlay"></div>
+
+            <aside id="cart-drawer" class="cart-drawer">
+                <div class="cart-drawer-header">
+                    <h2>Your Cart</h2>
+                    <button id="cart-close" class="cart-close"><i class="ri-close-line"></i></button>
+                </div>
+                <div id="cart-items" class="cart-items"></div>
+                <div class="cart-footer">
+                    <div class="cart-subtotal-row">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">₹0</span>
+                    </div>
+                    <button id="cart-checkout" class="btn-checkout">Checkout<i class="ri-arrow-right-line"></i></button>
+                </div>
+            </aside>
+        </header>
+
+        <main class="container checkout-main">
+            <section class="order-summary">
+                <h2 class="section-title">Order Summary</h2>
+                <div id="order-summary-items" class="order-summary-items"></div>
+                <div class="order-summary-total-row">
+                    <span>Total</span>
+                    <span id="order-summary-total">₹0</span>
+                </div>
+                <div class="checkout-fields">
+                    <div class="field-group">
+                        <label for="orderName">Full Name</label>
+                        <input type="text" id="orderName" placeholder="John Doe" required>
+                        <span id="orderNameError" class="field-error"></span>
+                    </div>
+
+                    <div class="field-group">
+                        <label for="orderEmail">Email</label>
+                        <input type="text" id="orderEmail" placeholder="anything@example.com" required>
+                        <span id="orderEmailError" class="field-error"></span>
+                    </div>
+                </div>
+                <button id="createOrderBtn" class="btn-checkout">Pay Now<i class="ri-secure-payment-line"></i></button>
+            </section>
+
+            <section class="payment-log">
+                <h2 class="section-title">Payment Log</h2>
+                <pre id="output" class="log-output">Waiting for action...</pre>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Store Catalog</p>
+        </footer>
+    </div>
+
+    <script type="module" src="assets/scripts/cart.js"></script>
+    <script type="module" src="assets/scripts/checkout.js"></script>
+</body>
+
+</html>

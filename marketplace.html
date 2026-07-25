@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store Catalog</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link href="assets/styles/root.css" rel="stylesheet">
+    <link href="assets/styles/layout.css" rel="stylesheet">
+    <link href="assets/styles/cart.css" rel="stylesheet">
+    <link href="assets/styles/catalog.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page">
+        <header class="site-header">
+            <div class="header-copy">
+                <div class="eyebrow">Live Catalog</div>
+                <h1>Featured Products</h1>
+                <p>Select an item to continue to instant checkout.</p>
+            </div>
+
+            <div class="header-actions">
+                <div id="item-count" class="item-count" style="display: none;">
+                    <i class="ri-shopping-bag-3-line"></i>
+                    <span id="item-count-text"></span>
+                </div>
+
+                <button id="cart-toggle" class="cart-button">
+                    <i class="ri-shopping-cart-2-line"></i>
+                    <span id="cart-badge" class="cart-badge">0</span>
+                </button>
+            </div>
+
+            <div id="cart-overlay" class="cart-overlay"></div>
+
+            <aside id="cart-drawer" class="cart-drawer">
+                <div class="cart-drawer-header">
+                    <h2>Your Cart</h2>
+                    <button id="cart-close" class="cart-close"><i class="ri-close-line"></i></button>
+                </div>
+                <div id="cart-items" class="cart-items"></div>
+                <div class="cart-footer">
+                    <div class="cart-subtotal-row">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">₹0</span>
+                    </div>
+                    <a href="checkout.html">
+                        <button id="cart-checkout" class="btn-checkout">Checkout<i class="ri-arrow-right-line"></i></button>
+                    </a>
+                </div>
+            </aside>
+        </header>
+
+        <main class="container">
+            <div id="status-message">
+                <div class="spinner"></div>
+                <span>Loading inventory...</span>
+            </div>
+            <div id="skeleton-grid" class="product-grid"></div>
+            <div id="product-grid" class="product-grid"></div>
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Store Catalog</p>
+        </footer>
+    </div>
+
+    <script type="module" src="assets/scripts/cart.js"></script>
+    <script type="module" src="assets/scripts/catalog.js"></script>
+</body>
+
+</html>

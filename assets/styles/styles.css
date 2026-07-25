@@ -1,0 +1,301 @@
+body {
+    background:
+        radial-gradient(ellipse 900px 500px at 12% -10%, rgba(124, 92, 255, 0.16), transparent 60%),
+        radial-gradient(ellipse 700px 400px at 100% 0%, rgba(255, 93, 143, 0.08), transparent 55%),
+        var(--bg);
+    background-attachment: fixed;
+    padding: 4.5rem 1.75rem 6rem 1.75rem;
+}
+
+.header {
+    max-width: 1180px;
+    margin: 0 auto 3.5rem auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.eyebrow::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--spark);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+}
+
+.header-copy h1 {
+    font-size: clamp(2.1rem, 4vw, 2.9rem);
+    font-weight: 700;
+    line-height: 1.05;
+}
+
+.header-copy p {
+    color: var(--text-muted);
+    margin-top: 0.65rem;
+    font-size: 1rem;
+    max-width: 34ch;
+}
+
+.item-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    padding: 0.6rem 1.1rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+}
+
+.item-count i {
+    color: var(--accent);
+    font-size: 1rem;
+}
+
+.item-count strong {
+    color: var(--text);
+    font-weight: 600;
+}
+
+#status-message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    text-align: center;
+    padding: 5.5rem 1rem;
+    color: var(--text-muted);
+}
+
+#status-message .status-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    font-size: 1.3rem;
+}
+
+#status-message.error .status-icon {
+    color: var(--danger);
+    border-color: rgba(255, 107, 107, 0.35);
+}
+
+#status-message.empty .status-icon {
+    color: var(--text-muted);
+}
+
+.spinner {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    border: 2.5px solid var(--border);
+    border-top-color: var(--accent);
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+}
+
+.product-card {
+    position: relative;
+    overflow: hidden;
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.5rem 1.5rem 1.5rem 1.7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.product-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--accent), var(--spark));
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.28s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--border-hover);
+    background-color: var(--surface-2);
+}
+
+.product-card:hover::before {
+    transform: scaleY(1);
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.sku-tag {
+    font-family: var(--font-mono);
+    background-color: var(--accent-soft);
+    color: var(--accent);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+    text-transform: uppercase;
+}
+
+.tax-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    color: var(--text-faint);
+    font-size: 0.74rem;
+}
+
+.tax-tag i {
+    font-size: 0.85rem;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.product-notes {
+    color: var(--text-muted);
+    font-size: 0.87rem;
+    line-height: 1.55;
+    margin-bottom: 1.6rem;
+    min-height: 2.7rem;
+}
+
+.card-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1.15rem;
+    border-top: 1px solid var(--border);
+}
+
+.price-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.price-label {
+    font-size: 0.66rem;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.15rem;
+}
+
+.price-value {
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.btn-buy {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background-color: var(--accent);
+    color: #ffffff;
+    border: none;
+    padding: 0.65rem 1.15rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.1s ease, gap 0.15s ease;
+}
+
+.btn-buy i {
+    font-size: 0.95rem;
+    transition: transform 0.15s ease;
+}
+
+.btn-buy:hover {
+    background-color: #6d4bff;
+    gap: 0.6rem;
+}
+
+.btn-buy:hover i {
+    transform: translateX(2px);
+}
+
+.btn-buy:active {
+    transform: scale(0.97);
+}
+
+.skeleton-card {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 1.5rem;
+    height: 196px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.skeleton-line {
+    background: linear-gradient(90deg, var(--border) 25%, var(--surface-2) 50%, var(--border) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.4s ease-in-out infinite;
+    border-radius: 6px;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
