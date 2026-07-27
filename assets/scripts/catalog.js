@@ -36,7 +36,7 @@ async function fetchItems() {
     const skeletonGrid = document.getElementById("skeleton-grid");
 
     try {
-        const response = await fetch("https://api-payment-invoice-system.vercel.app/api/item/fetch/all");
+        const response = await fetch("https://api-pixelstore.vercel.app/api/item/fetch/all");
 
         if (!response.ok) {
             throw new Error("Failed to load inventory");

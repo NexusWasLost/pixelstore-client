@@ -110,7 +110,7 @@ async function createOrder() {
     }
 
     try {
-        const response = await fetch("https://api-payment-invoice-system.vercel.app/api/order/create", {
+        const response = await fetch("https://api-pixelstore.vercel.app/api/order/create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -163,7 +163,7 @@ function openCheckout(dbOrder) {
 
 async function verifyOrder(paymentResponse) {
     try {
-        const response = await fetch("https://api-payment-invoice-system.vercel.app/api/order/verify", {
+        const response = await fetch("https://api-pixelstore.vercel.app/api/order/verify", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
