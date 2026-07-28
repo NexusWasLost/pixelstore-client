@@ -176,9 +176,10 @@ async function verifyOrder(paymentResponse) {
         });
 
         const result = await response.json();
-        log("Verify Order Response", result);
 
         if (result.success) clearCart();
+
+        window.location.href = `/result.html?ord=${result.data.orderId}`;
 
     }
     catch (error) {
