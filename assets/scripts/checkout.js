@@ -110,7 +110,7 @@ async function createOrder() {
     }
 
     try {
-        const response = await fetch("https://api-pixelstore.vercel.app/api/order/create", {
+        const response = await fetch("http://localhost:8000/api/order/create", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -163,7 +163,7 @@ function openCheckout(dbOrder) {
 
 async function verifyOrder(paymentResponse) {
     try {
-        const response = await fetch("https://api-pixelstore.vercel.app/api/order/verify", {
+        const response = await fetch("http://localhost:8000/api/order/verify", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -176,9 +176,10 @@ async function verifyOrder(paymentResponse) {
         });
 
         const result = await response.json();
-        log("Verify Order Response", result);
 
         if (result.success) clearCart();
+
+        window.location.href = `/postPayment.html?ord=${result.data.orderId}`;
 
     }
     catch (error) {
