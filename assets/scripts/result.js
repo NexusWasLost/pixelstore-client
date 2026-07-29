@@ -21,6 +21,7 @@ export async function loadDynamicData(ordId) {
 
     if (success) {
         successState.style.display = "flex";
+        document.getElementById("download-invoice-btn").href = `https://api-pixelstore.vercel.app/api/invoice?orderId=${ordId}`;
     }
     else {
         failureState.style.display = "flex";
