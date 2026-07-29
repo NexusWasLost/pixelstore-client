@@ -179,7 +179,7 @@ async function verifyOrder(paymentResponse) {
 
         if (result.success) clearCart();
 
-        window.location.href = `/postPayment.html?ord=${result.data.orderId}`;
+        window.location.href = `/result.html?ord=${result.data.orderId}`;
 
     }
     catch (error) {
