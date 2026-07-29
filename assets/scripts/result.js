@@ -3,7 +3,7 @@ export async function loadDynamicData(ordId) {
     let success;
     if(ordId === null) return;
 
-    const response = await fetch(`http://localhost:8000/api/order/status/${ordId}`);
+    const response = await fetch(`http://api-pixelstore.vercel.app/api/order/status/${ordId}`);
     if(!response.ok){
         console.log("Fetch err: ", response.message);
         return;
