@@ -21,6 +21,7 @@ export async function loadDynamicData(ordId) {
 
     if (success) {
         successState.style.display = "flex";
+        document.getElementById("download-invoice-btn").href = `http://localhost:8000/api/invoice?orderId=${ordId}`;
     }
     else {
         failureState.style.display = "flex";
