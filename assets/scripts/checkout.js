@@ -34,7 +34,6 @@ function validateCheckoutFields() {
         isValid = false;
     }
 
-    console.log(emailValue);
     if (emailValue.length === 0) {
         emailInput.classList.add("invalid");
         emailError.innerHTML = "Email is required";
@@ -109,6 +108,10 @@ async function createOrder() {
         return;
     }
 
+    //change btn content and disable it
+    this.textContent = "Please Wait";
+    this.disabled = true;
+
     try {
         const response = await fetch("https://api-pixelstore.vercel.app/api/order/create", {
             method: "POST",
@@ -122,18 +125,19 @@ async function createOrder() {
         log("Create Order Response", result);
 
         if (!response.ok) {
+            alert(result.message);
             return;
         }
 
         const razorpayOrder = result.data;
-        openCheckout(razorpayOrder);
+        openCheckout(razorpayOrder, this);
 
     } catch (error) {
         log("Create Order Error", { message: error.message });
     }
 }
 
-function openCheckout(dbOrder) {
+function openCheckout(dbOrder, btn) {
     const options = {
         key: RAZORPAY_KEY_ID,
         amount: Math.round(dbOrder.total * 100),
@@ -148,6 +152,8 @@ function openCheckout(dbOrder) {
         modal: {
             ondismiss: function () {
                 log("Checkout Dismissed", { message: "User closed the payment window" });
+                btn.innerHTML = `Pay Now<i class="ri-secure-payment-line"></i>`;
+                btn.disabled = false;
             }
         }
     };
@@ -189,7 +195,8 @@ async function verifyOrder(paymentResponse) {
 
 document.addEventListener("DOMContentLoaded", function () {
     renderOrderSummary();
-    document.getElementById("createOrderBtn").addEventListener("click", createOrder);
+    const createOrderBtn = document.getElementById("createOrderBtn");
+    createOrderBtn.addEventListener("click", createOrder);
 });
 
 document.addEventListener("cart-updated", function () {
