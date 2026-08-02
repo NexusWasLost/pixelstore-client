@@ -18,7 +18,7 @@
 }
 
 .order-summary,
-.payment-log {
+.payment-details {
     background-color: var(--surface);
     border: 1px solid var(--border);
     border-radius: 18px;
@@ -74,9 +74,7 @@
     font-family: var(--font-mono);
     font-size: 1.1rem;
     font-weight: 600;
-    padding: 1rem 0;
-    margin-bottom: 1.25rem;
-    border-top: 1px solid var(--border);
+    padding-top: 1rem;
 }
 
 .checkout-fields {

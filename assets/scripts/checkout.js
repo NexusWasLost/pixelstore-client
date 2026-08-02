@@ -7,9 +7,9 @@ const RAZORPAY_KEY_ID = "rzp_test_TF13P6PL244jWe";
 
 const outputEl = document.getElementById("output");
 
-function log(label, data) {
-    outputEl.textContent += `\n${label}:\n${JSON.stringify(data, null, 2)}\n`;
-}
+// function log(label, data) {
+//     outputEl.textContent += `\n${label}:\n${JSON.stringify(data, null, 2)}\n`;
+// }
 
 // Checks the name and contact fields, shows inline errors, returns true only if both are valid
 function validateCheckoutFields() {
@@ -122,7 +122,7 @@ async function createOrder() {
         });
 
         const result = await response.json();
-        log("Create Order Response", result);
+        console.log("Create Order Response", result);
 
         if (!response.ok) {
             alert(result.message);
@@ -135,7 +135,7 @@ async function createOrder() {
         openCheckout(razorpayOrder, this);
 
     } catch (error) {
-        log("Create Order Error", { message: error.message });
+        console.log("Create Order Error", { message: error.message });
     }
 }
 
@@ -148,12 +148,12 @@ function openCheckout(dbOrder, btn) {
         name: "Test Store",
         description: "Test Transaction",
         handler: function (response) {
-            log("Checkout Success Response", response);
+            console.log("Checkout Success Response", response);
             verifyOrder(response);
         },
         modal: {
             ondismiss: function () {
-                log("Checkout Dismissed", { message: "User closed the payment window" });
+                console.log("Checkout Dismissed", { message: "User closed the payment window" });
                 btn.innerHTML = `Pay Now<i class="ri-secure-payment-line"></i>`;
                 btn.disabled = false;
             }
@@ -163,7 +163,7 @@ function openCheckout(dbOrder, btn) {
     const rzp = new Razorpay(options);
 
     rzp.on("payment.failed", function (response) {
-        log("Payment Failed", response.error);
+        console.log("Payment Failed", response.error);
     });
 
     rzp.open();
@@ -191,7 +191,7 @@ async function verifyOrder(paymentResponse) {
 
     }
     catch (error) {
-        log("Verify Order Error", { message: error.message });
+        console.log("Verify Order Error", { message: error.message });
     }
 }
 
