@@ -126,6 +126,8 @@ async function createOrder() {
 
         if (!response.ok) {
             alert(result.message);
+            this.innerHTML = `Pay Now<i class="ri-secure-payment-line"></i>`;
+            this.disabled = false;
             return;
         }
 
