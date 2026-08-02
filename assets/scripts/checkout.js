@@ -145,8 +145,8 @@ function openCheckout(dbOrder, btn) {
         amount: Math.round(dbOrder.total * 100),
         currency: "INR",
         order_id: dbOrder.razorpayOrderId,
-        name: "Test Store",
-        description: "Test Transaction",
+        name: "Pixel Store",
+        description: "Standard Test Transaction",
         handler: function (response) {
             console.log("Checkout Success Response", response);
             verifyOrder(response);
