@@ -1,16 +1,21 @@
-export async function loadDynamicData(ordId) {
+const openInvoiceWindow = function (url) {
+    const invoiceWindow = window.open(url, "_blank", "noopener,noreferrer,menubar=no,toolbar=no,location=no,status=no,height=600,width=960,scrollbars=yes");
+    if (invoiceWindow) invoiceWindow.focus();
+};
+
+async function loadDynamicData(ordId) {
 
     let success;
-    if(ordId === null) return;
+    if (ordId === null) return;
 
     const response = await fetch(`https://api-pixelstore.vercel.app/api/order/status/${ordId}`);
-    if(!response.ok){
+    if (!response.ok) {
         console.log("Fetch err: ", response.message);
         return;
     }
 
     const stat = await response.json();
-    if(response.data === "NOT_PAID") success = false
+    if (response.data === "NOT_PAID") success = false
     else success = true;
 
     const defaultState = document.getElementById("result-default");
@@ -21,7 +26,13 @@ export async function loadDynamicData(ordId) {
 
     if (success) {
         successState.style.display = "flex";
-        document.getElementById("download-invoice-btn").href = `https://api-pixelstore.vercel.app/api/invoice?orderId=${ordId}`;
+
+        const downloadBtn = document.getElementById("download-invoice-btn");
+
+        downloadBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            openInvoiceWindow(`https://api-pixelstore.vercel.app/api/invoice?orderId=${ordId}`);
+        });
     }
     else {
         failureState.style.display = "flex";
