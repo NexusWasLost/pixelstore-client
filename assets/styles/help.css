@@ -46,8 +46,7 @@
     font-size: 0.95rem;
 }
 
-.payment-wallets,
-.payments-netbanking,
+.payment-wallets, .payments-netbanking,
 .payments-cards {
     margin-top: 1.5rem;
     padding-left: 1.25rem;
