@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help | Pixel Store</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="assets/icons/site.webmanifest">
+
+    <link href="assets/styles/root.css" rel="stylesheet">
+    <link href="assets/styles/layout.css" rel="stylesheet">
+    <link href="assets/styles/help.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="page">
+        <header class="site-header">
+            <div class="header-copy">
+                <div class="eyebrow">Documentation</div>
+                <h1>Help</h1>
+                <p>Everything you need to know about how Pixel Store works.</p>
+            </div>
+
+            <div class="header-actions">
+                <a href="index.html" class="docs-back-btn">
+                    <i class="ri-arrow-left-line"></i>
+                    Back to Home
+                </a>
+            </div>
+        </header>
+
+        <main class="container docs-main">
+
+            <section class="docs-section">
+                <h2>What this is ?</h2>
+                <p>
+                    Pixel Store is a mini marketplace created as a demo project showcasing a full Razorpay integration.
+                    It features a product catalog, persistent cart, secure checkout, payment verification
+                    and automatic invoice generation, built end to end.
+                </p>
+            </section>
+
+            <section class="docs-section">
+                <h2>How to use</h2>
+                <p>
+                    Using Pixel Store is extremely easy and straightforward:<br><br>
+                    1. Browse the catalog and add products to your cart.<br>
+                    2. Hit the cart icon on the top to view your cart and then hit checkout to go to the checkout
+                    page.<br>
+                    3. Fill in your name (this will be the name on order) and email address then hit <b>"Pay Now"</b>,
+                    and complete
+                    the payment on
+                    the Razorpay checkout window. Upon success, you'll be redirected to a
+                    confirmation page with an invoice download option.
+                </p>
+            </section>
+
+            <section class="docs-section">
+                <h2>Payment methods</h2>
+                <p>
+                    Payments are processed through Razorpay's checkout. Since this is a demo project, UPI is not
+                    available as a payment method, but the payment methods below can be used:
+                </p>
+
+                <div class="payment-wallets">
+                    <h3>Wallets</h3>
+
+                    <p>
+                        Wallets are one of the easiest ways to pay, and since this is a demo project it doesn't
+                        require any real account at all.<br>
+
+                        <br>To use wallets, select the <b>"Wallet"</b> option and go with any wallet of your
+                        choice.<br><br>
+
+                        The list of available wallets can be found below:
+                    </p>
+
+                    <table>
+                        <tr>
+                            <th>Wallet Name</th>
+                            <th>Requires credentials</th>
+                        </tr>
+                        <tr>
+                            <td>Airtel Payments Bank</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Ola Money</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>Mobikwik</td>
+                            <td>Yes (Email address)</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="payments-netbanking">
+                    <h3>Netbanking</h3>
+
+                    <p>
+                        Similar to wallets, the netbanking method is also very straightforward to use and
+                        doesn't require a real bank account.<br>
+
+                        <br>To use netbanking, select the <b>"Netbanking"</b> option and go with any bank of your
+                        choice.
+                    </p>
+                </div>
+
+                <div class="payments-cards">
+                    <h3>Cards</h3>
+
+                    <p>
+                        For using cards, Razorpay provides dummy card numbers that you can use.<br>
+
+                        <br>To use cards, select the <b>"Cards"</b> option and enter any of the card numbers given
+                        below.
+                        For the expiry field, use any future date from today in MM/YY format, and for CVV any random
+                        3-digit number will work. Lastly, after entering the card details, a prompt to enter an OTP
+                        will appear, where any number can be used as the dummy OTP.<br><br>
+
+                        The list of available dummy card numbers can be found below:
+                    </p>
+
+                    <table>
+                        <tr>
+                            <th>Network</th>
+                            <th>Card Number</th>
+                        </tr>
+                        <tr>
+                            <td>Visa</td>
+                            <td>4100 2800 0000 1007</td>
+                        </tr>
+                        <tr>
+                            <td>RuPay</td>
+                            <td>6527 6589 0000 1005</td>
+                        </tr>
+                        <tr>
+                            <td>Mastercard</td>
+                            <td>5555 5100 0008 1006</td>
+                        </tr>
+                    </table>
+                    <p>
+                        View Razorpay's docs for the full list of cards and other details
+                        <a href="https://razorpay.com/docs/payments/payments/test-card-details/#test-cards-for-indian-payments"
+                            target="_blank">here</a>.
+                    </p>
+                </div>
+            </section>
+
+            <section class="docs-section">
+                <h2>Completing or Failing a payment</h2>
+                <p>
+                    Finally, since this is a sandbox payment setup the user (you) have full control over if the payment
+                    succeeds or fails.
+                    To complete the transaction you need to hit the <b>"Success"</b> button to make the payment
+                    success and <b>"Failure"</b> if you wish fail the payment.
+                </p>
+            </section>
+
+            <section class="docs-section" id="other-info">
+                <h2>Other info</h2>
+                <p>
+                    This project runs against Razorpay's test mode, so no real money is
+                    involved. The checkout uses Razorpay's sandbox environment, where you
+                    can manually choose Success or Failure on the mock bank page. Since
+                    this is a demo, <b><u>REAL CARD INFORMATION OR BANK DETAILS SHOULD NOT BE ENTERED !</u></b>
+                    Use Razorpay's published test credentials.<br>
+                    Any order placed here is purely simulated, meaning you will not receive any
+                    product, invoice email, or physical/digital delivery of any kind but you can still download a generated invoice.
+                </p>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <p>&copy; 2026 Pixel Store — Razorpay Integration Showcase</p>
+        </footer>
+    </div>
+</body>
+
+</html>
