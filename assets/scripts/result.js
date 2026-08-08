@@ -8,7 +8,7 @@ async function loadDynamicData(ordId) {
     let success;
     if (ordId === null) return;
 
-    const response = await fetch(`https://api-pixelstore.vercel.app/api/order/status/${ordId}`);
+    const response = await fetch(`http://localhost:8000/api/order/status/${ordId}`);
     if (!response.ok) {
         console.log("Fetch err: ", response.message);
         return;
@@ -31,7 +31,7 @@ async function loadDynamicData(ordId) {
 
         downloadBtn.addEventListener("click", function (e) {
             e.preventDefault();
-            openInvoiceWindow(`https://api-pixelstore.vercel.app/api/invoice?orderId=${ordId}`);
+            openInvoiceWindow(`http://localhost:8000/api/invoice?orderId=${ordId}`);
         });
     }
     else {

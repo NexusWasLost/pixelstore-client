@@ -47,7 +47,7 @@ export const addToCart = function (item) {
             id: item._id,
             name: item.name,
             sku: item.SKU,
-            price: Number(item.MRP) || 0,
+            price: Number(item.basePrice) || 0,
             taxApplicable: Number(item.taxApplicable) || 0,
             quantity: 1
         });
