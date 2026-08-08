@@ -80,7 +80,7 @@ function renderItems(itemsList) {
 
     while (i < itemsList.length) {
         const item = itemsList[i];
-        const formattedPrice = formatPrice(item.MRP, item.taxApplicable);
+        const formattedPrice = formatPrice(item.basePrice, item.taxApplicable);
 
         const card = document.createElement("div");
         card.className = "product-card";
