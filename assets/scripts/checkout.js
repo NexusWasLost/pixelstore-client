@@ -1,15 +1,9 @@
 import { getCartItems, getCartTotals, clearCart } from "./cart.js";
 import { formatPrice, calculateLineTotal } from "./utils.js";
 
-// Razorpay's key_id is meant to be public and safe to expose client-side.
-// Replace with your actual test key_id (starts with rzp_test_...)
 const RAZORPAY_KEY_ID = "rzp_test_TF13P6PL244jWe";
 
 const outputEl = document.getElementById("output");
-
-// function log(label, data) {
-//     outputEl.textContent += `\n${label}:\n${JSON.stringify(data, null, 2)}\n`;
-// }
 
 // Checks the name and contact fields, shows inline errors, returns true only if both are valid
 function validateCheckoutFields() {
